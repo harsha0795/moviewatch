@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace moviewatch.Controllers
-{
+{   [AllowAnonymous]
     public class HomeController : Controller
     {
         public ActionResult Index()

@@ -46,22 +46,22 @@ namespace moviewatch
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
             // Uncomment the following lines to enable logging in with third party login providers
-            //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
+           // app.UseMicrosoftAccountAuthentication(
+            //    clientId: "2a3d0aa5-4ae7-409a-a983-c7a6e3fdf4af",
+              //  clientSecret: "3P85XYvndq5jxq0Fg39bAko");
 
             //app.UseTwitterAuthentication(
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+              appId: "524429194559416",
+               appSecret: "d8615b190735e51154e5aabe0f573ee4");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
-            //    ClientId = "",
-            //    ClientSecret = ""
+              //  ClientId = "904929340887-nf5ml1n65l27hlfqo1r1mmp0bqp00bk3.apps.googleusercontent.com",
+                //ClientSecret = "w5XogKPpyxub_4uPL9SWtw98"
             //});
         }
     }

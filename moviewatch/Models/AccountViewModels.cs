@@ -8,6 +8,9 @@ namespace moviewatch.Models
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
+        [Required]
+        [Display(Name = "Proof of Identity")]
+        public string IdProof { get; set; }
     }
 
     public class ExternalLoginListViewModel
@@ -64,6 +67,14 @@ namespace moviewatch.Models
 
     public class RegisterViewModel
     {
+    //    public IEnumerable<Proof> Proof { get; set; }
+
+       /* [Required]
+        [Display(Name ="Identity Proof Type")]
+        public int Pid { get; set; }*/
+        [Required]
+        [Display(Name = "Proof of Identity")]
+        public string IdProof { get; set; }
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

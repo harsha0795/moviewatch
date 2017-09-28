@@ -1,0 +1,50 @@
+﻿@model moviewatch.Models.CustomerViewModel
+
+@{
+    ViewBag.Title = "CustomerForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (Model.Customer!=null && Model.Customer.Id!=0)
+{
+    <h2> Edit Customer </h2>
+}
+else
+{
+    <h2>New Customer</h2>
+}
+@using (Html.BeginForm("Register", "Customer"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.Name)
+        @Html.TextBoxFor(m => m.Customer.Name,new { @class = "form-control"})
+        @Html.ValidationMessageFor(m => m.Customer.Name)
+    </div>
+    <div class="form-group">
+        @Html.Label("Date of Birth")
+        @Html.TextBoxFor(m => m.Customer.DOB, "{0:d MMM yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Customer.DOB)
+    </div>
+    <div class="form-group">
+        @Html.Label("Membership Type")
+        @Html.DropDownListFor(m => m.Customer.MemberShipId, new SelectList(Model.Membership,"Id","Name"),"" ,new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Customer.MemberShipId)
+    </div>
+    <div>
+        <label>
+            @Html.CheckBoxFor(m => m.Customer.IsSubscribedNewsletter) Subscribed to Newsletter ?
+        </label>
+    </div>
+    if (Model.Customer != null && Model.Customer.Id != 0)
+    {
+        @Html.HiddenFor(m => m.Customer.Id)
+    }
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

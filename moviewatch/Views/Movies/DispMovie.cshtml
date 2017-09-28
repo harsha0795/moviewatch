@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "DispMovie";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int id = ViewBag.Id;
+}
+
+<h2>Display Movies</h2>
+<table id="datatable" class="table table-striped table-hover ">
+  <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Genre</th>
+            <th>Release Date</th>
+        </tr>
+</table>
+
+@section scripts
+{
+    <script>
+        function RenderTable(json) {
+            $(document).ready(function () {
+                var output = [];
+               // output.push("<table class=\"table table- striped table- hover \">");
+                output.push("<tbody>")
+                $.each(json, function (k, v) {
+                    if(k!="genreid")
+                        if (k === "genre") {
+                            output.push("<td>");
+                            output.push(v.genre);
+                            output.push("</td>");
+                        }
+                        else {
+                            output.push("<td>");
+                            output.push(v);
+                            output.push("</td>");
+                        } 
+                });
+                output.push("</tbody>")
+               // output.push("</table>");
+
+                $("#datatable").append(output.join(""));
+
+                $("#datatable").find("table").dataTable();
+
+
+            });
+        }
+        
+        $.ajax({
+            url: "/api/movie/@(id)",
+            method: "GET",
+            success: function (value) {
+                           console.log(value)
+                          RenderTable(value)
+            }
+        });
+        
+    </script>
+}
